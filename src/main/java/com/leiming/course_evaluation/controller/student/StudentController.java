@@ -15,7 +15,7 @@ public class StudentController {
     @RequestMapping("/student")
     public ModelAndView index(@ModelAttribute("msg") String msg, Model model, HttpServletRequest request){
         model.addAttribute("msg", msg);
-        if (!(request.getSession().getAttribute("user") instanceof Student)){
+        if ((request.getSession().getAttribute("user") instanceof Student)){
             return new ModelAndView("error/403");
         }
         return new ModelAndView("student/index");
